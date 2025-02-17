@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Signikart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            background-color: darkgreen;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        h1, h2 {
+            color: #f4f4f4;
+        }
+        p {
+            text-align: justify;
+            line-height: 1.6;
+        }
+        .shop-button, .about-button {
+            background: white;
+            color: darkgreen;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .shop-button:hover, .about-button:hover {
+            background: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ Signikart - A Step Towards Sustainable Shopping</h1>
+        <p>Welcome to Signikart, your go-to marketplace for eco-friendly and sustainable products. In a world where environmental concerns are rising, we believe that small changes in our shopping habits can lead to a big impact. Signikart is designed to help conscious consumers find high-quality, sustainable, and ethically sourced products with ease.</p>
+
+        <p>At Signikart, we curate a wide range of products that promote sustainability without compromising on quality. From biodegradable home essentials to cruelty-free beauty products and eco-friendly fashion, we bring together brands that care about the planet. Our goal is to create a shopping experience where every purchase supports ethical businesses and helps reduce environmental harm.</p>
+
+        <h2>🌱 Why Choose Signikart?</h2>
+        <p>We understand that finding genuine eco-friendly products can be challenging. That’s why we ensure that every item listed on Signikart meets strict sustainability criteria. Whether it's organic materials, recyclable packaging, or fair-trade practices, we verify that each product aligns with our mission of responsible consumption.</p>
+
+        <p>Not only do we offer sustainable products, but we also educate our customers about the importance of green living. Our blog and resources section provides insightful tips on reducing waste, making conscious purchases, and embracing a more sustainable lifestyle.</p>
+
+        <h2>🛍 Shop with a Purpose</h2>
+        <p>Every purchase you make on Signikart contributes to a cleaner and healthier planet. We partner with brands that are committed to sustainability, ensuring that your shopping choices support businesses that prioritize ethical production and environmental responsibility.</p>
+
+        <p>Join the movement towards a more sustainable future. Start shopping with Signikart today and make a difference—one product at a time.</p>
+
+        <a href="{{ url_for('shop') }}" class="shop-button">Start Shopping</a>
+        <a href="{{ url_for('about') }}" class="about-button">Learn More</a>
+        <a href="{{ url_for('index') }}" class="index-button">Back to Index</a>
+    </div>
+
+</body>
+</html>

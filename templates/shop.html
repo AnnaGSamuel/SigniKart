@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Signikart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            background-color: darkgreen;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .shop-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        .product-card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+        }
+        .buy-button, .home-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .buy-button:hover, .home-button:hover {
+            background-color: #218838;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Signikart Shop</h1>
+        <p>Discover eco-friendly and sustainable products</p>
+    </header>
+
+    <div class="shop-container">
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/product1.jpg') }}" alt="Eco-Friendly Bag">
+            <h3>Eco-Friendly Tote Bag</h3>
+            <p>Made from 100% recycled materials.</p>
+            <button class="buy-button">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/product2.jpg') }}" alt="Bamboo Toothbrush">
+            <h3>Bamboo Toothbrush</h3>
+            <p>Biodegradable and sustainable.</p>
+            <button class="buy-button">Buy Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/product3.jpg') }}" alt="Reusable Water Bottle">
+            <h3>Reusable Water Bottle</h3>
+            <p>Stainless steel and BPA-free.</p>
+            <button class="buy-button">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Back to Home Button -->
+    <div class="button-container">
+        <a href="{{ url_for('index') }}">
+            <button class="index-button">Back to Home</button>
+        </a>
+    </div>
+</body>
+</html>

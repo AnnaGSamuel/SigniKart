@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: darkgreen;
+    text-align: center;
+    color: white; /* Ensures text is visible */
+}
+
+h1, h2, p {
+    color: white;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.2); /* Slight transparency for contrast */
+    padding: 20px;
+    width: 300px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+input {
+    display: block;
+    width: 90%;
+    padding: 8px;
+    margin: 10px auto;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
+
+button {
+    background: white;
+    color: darkgreen;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: lightgray;
+}

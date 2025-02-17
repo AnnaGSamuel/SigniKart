@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signikart - Sustainable Shopping</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* General Styles */
+        body {
+            background-color: darkgreen;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 100, 0, 0.9);
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #fff;
+        }
+
+        header p {
+            font-size: 18px;
+            margin: 5px 0;
+            color: #ddd;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #006400;
+            padding: 15px 0;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .menu li {
+            display: inline;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: background 0.3s ease;
+        }
+
+        .menu a:hover {
+            background: #228B22;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 100, 0, 0.9);
+            padding: 15px;
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌱 Welcome to Signikart</h1>
+        <p>Shop Smart Shop Sustainable.</p>
+
+    </header>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('shop') }}">Shop</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            {% if session["user_id"] %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <h2>🌿 Welcome to Signikart – Your Sustainable Shopping Destination</h2>
+
+    <p>At Signikart, we believe that conscious choices lead to a better future. Our mission is to revolutionize shopping by offering a platform where sustainability meets convenience. Whether you're looking for eco-friendly home essentials, organic skincare, or sustainable fashion, we bring you products that are good for you and the planet.</p>
+    <h3>🌍 Why Choose Signikart?</h3>
+
+    <p>Ethical & Sustainable Brands: We carefully select products from companies committed to sustainability.
+        Eco-Friendly Materials: Every product is made from organic, recycled, or biodegradable materials.
+        Low-Impact Packaging: We prioritize minimal-waste and plastic-free packaging.
+        Cruelty-Free & Ethical Sourcing: No animal testing, fair-trade practices, and ethical labor policies.</p>
+
+    <h3> 💚 Make a Difference with Every Purchase</h3>
+    <p>Shopping at Signikart is more than just a transaction—it’s a step towards a sustainable future. Each item you choose supports brands that prioritize environmental responsibility and reduce carbon footprints.</p>
+
+    <h3>🛒 Shop with Purpose</h3>
+    <p>We believe that sustainability should be accessible to everyone. That’s why we’ve designed an easy-to-navigate platform where you can shop guilt-free. Whether you’re switching to a greener lifestyle or looking for gifts that matter, Signikart makes it simple to find eco-conscious alternatives to everyday products.</p>
+    
+    <h3>🚀 Join the Green Revolution</h3>
+    <p>Sustainability isn’t just a trend—it’s a necessity. Be a part of the change and join thousands of conscious consumers who are making a positive impact. Together, we can create a world where responsible shopping is the norm.
+
+        ✨ Start Shopping Today – Every Choice Matters!</p>
+
+    <footer>
+        <p>© 2025 Signikart. All rights reserved. | Designed for a Sustainable Future 🌍</p>
+    </footer>
+
+</body>
+</html>
