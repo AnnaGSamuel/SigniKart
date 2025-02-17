@@ -1,0 +1,60 @@
+<!-- templates/profile.html -->
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-image">
+            <img src="{{ user.profile_image or url_for('static', filename='images/default-profile.png') }}" alt="Profile Picture">
+        </div>
+        <div class="profile-info">
+            <h1>{{ user.username }}</h1>
+            <p>{{ user.email }}</p>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
+
+    <div class="impact-dashboard">
+        <h2>Your Sustainability Impact</h2>
+        <div class="impact-cards">
+            <div class="impact-card">
+                <div class="impact-icon">🌱</div>
+                <div class="impact-value">{{ "%.1f"|format(impact.co2_saved) }}</div>
+                <div class="impact-label">kg CO₂ Saved</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">💧</div>
+                <div class="impact-value">{{ "%.1f"|format(impact.water_saved) }}</div>
+                <div class="impact-label">L Water Conserved</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">♻️</div>
+                <div class="impact-value">{{ "%.1f"|format(impact.waste_reduced) }}</div>
+                <div class="impact-label">kg Waste Reduced</div>
+            </div>
+        </div>
+        
+        <div class="impact-chart">
+            <canvas id="impactChart"></canvas>
+        </div>
+    </div>
+
+    <div class="purchase-history">
+        <h2>Recent Purchases</h2>
+        <div class="purchase-list">
+            {% for purchase in purchases %}
+            <div class="purchase-item">
+                <img src="{{ purchase.product.image_url }}" alt="{{ purchase.product.title }}">
+                <div class="purchase-details">
+                    <h3>{{ purchase.product.title }}</h3>
+                    <p>Purchased on {{ purchase.purchase_date.strftime('%B %d, %Y') }}</p>
+                    <div class="purchase-impact">
+                        <span>Impact: {{ "%.1f"|format(purchase.calculate_impact().co2_saved) }}kg CO₂ saved</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

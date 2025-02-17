@@ -1,0 +1,87 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signikart - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <a href="{{ url_for('home') }}">
+                    <span class="brand-name">Signikart</span>
+                    <span class="tagline">Shop smart, shop sustainable</span>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                {% if 'user_id' in session %}
+                    <a href="{{ url_for('products') }}" class="nav-link">
+                        <span class="nav-icon">🛍️</span>
+                        Products
+                    </a>
+                    <a href="{{ url_for('community') }}" class="nav-link">
+                        <span class="nav-icon">👥</span>
+                        Community
+                    </a>
+                    <a href="{{ url_for('profile') }}" class="nav-link">
+                        <span class="nav-icon">👤</span>
+                        Profile
+                    </a>
+                    
+                    <a href="{{ url_for('logout') }}" class="nav-link logout-btn">
+                        <span class="nav-icon">🚪</span>
+                        Logout
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                    <a href="{{ url_for('register') }}" class="nav-link">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                    <button class="alert-close">×</button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Signikart</h3>
+                <p>Making sustainable shopping accessible to everyone</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="{{ url_for('products') }}">Products</a>
+                <a href="{{ url_for('community') }}">Community</a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Signikart. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

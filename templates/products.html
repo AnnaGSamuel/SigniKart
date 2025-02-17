@@ -1,0 +1,30 @@
+<!-- templates/products.html -->
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="products-container">
+    <h1>Our Sustainable Products</h1>
+    <div class="products-grid">
+        {% for product in products %}
+        <a href="{{ url_for('product_detail', product_id=product.id) }}" class="product-card-link">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ product.image_url }}" alt="{{ product.title }}">
+                    <div class="eco-badge">
+                        <span>Eco Score</span>
+                        <span class="score">{{ product.eco_score }}</span>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">{{ product.title }}</h3>
+                    <div class="product-footer">
+                        <span class="product-price">₹{{ "%.2f"|format(product.price) }}</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,100 @@
+<!-- templates/product_detail.html -->
+{% extends "base.html" %}
+{% block title %}{{ product.title }}{% endblock %}
+{% block content %}
+<div class="product-detail">
+    <div class="product-image">
+        <img src="{{ product.image_url }}" alt="{{ product.title }}">
+    </div>
+    <div class="product-info">
+        <h1>{{ product.title }}</h1>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-meta">
+            <div class="price">₹{{ "%.2f"|format(product.price) }}</div>
+            <div class="eco-score">
+                <span>Eco Score</span>
+                <div class="score-bar">
+                    <div class="score-fill">{{ product.eco_score }}%</div>
+                </div>
+            </div>
+            <div class="certifications">
+                {% for cert in product.certifications.split(',') %}
+                    <span class="certification-badge">{{ cert }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="environmental-impact">
+            <h3>Environmental Impact</h3>
+            <div class="impact-stats">
+                <div class="impact-item">
+                    <span class="impact-value">{{ "%.1f"|format(product.co2_impact) }}kg</span>
+                    <span class="impact-label">CO₂ Saved</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-value">{{ "%.1f"|format(product.water_impact) }}L</span>
+                    <span class="impact-label">Water Conserved</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-value">{{ "%.1f"|format(product.waste_impact) }}kg</span>
+                    <span class="impact-label">Waste Reduced</span>
+                </div>
+            </div>
+        </div>
+        <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST" class="add-to-cart">
+            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+<!-- templates/product_detail.html -->
+<!--{% extends "base.html" %}
+{% block title %}{{ product.title }}{% endblock %}
+{% block content %}
+<div class="product-detail">
+    <div class="product-image">
+        <img src="{{ product.image_url }}" alt="{{ product.title }}">
+    </div>
+    <div class="product-info">
+        <h1>{{ product.title }}</h1>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-meta">
+            <div class="price">₹{{ "%.2f"|format(product.price) }}</div>
+            <div class="eco-score">
+                <span>Eco Score</span>
+                <div class="score-bar">
+                    <div class="score-fill">{{ product.eco_score }}%</div>
+                    <!--<div class="score-fill" style="width: ">{{ product.eco_score }}%</div>-->
+                <!--</div>
+            </div>
+            <div class="certifications">
+                {% for cert in product.certifications.split(',') %}
+                    <span class="certification-badge">{{ cert }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="environmental-impact">
+            <h3>Environmental Impact</h3>
+            <div class="impact-stats">
+                <div class="impact-item">
+                    <span class="impact-value">{{ "%.1f"|format(product.co2_impact) }}kg</span>
+                    <span class="impact-label">CO₂ Saved</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-value">{{ "%.1f"|format(product.water_impact) }}L</span>
+                    <span class="impact-label">Water Conserved</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-value">{{ "%.1f"|format(product.waste_impact) }}kg</span>
+                    <span class="impact-label">Waste Reduced</span>
+                </div>
+            </div>
+        </div>
+        <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST" class="add-to-cart">
+            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+    </div>
+</div>
+{% endblock %}-->

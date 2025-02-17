@@ -1,0 +1,43 @@
+<!-- templates/community.html -->
+{% extends "base.html" %}
+{% block title %}Community{% endblock %}
+{% block content %}
+<div class="community-container">
+    <div class="post-form">
+        <h2>Share Your Sustainable Journey</h2>
+        <form action="{{ url_for('create_post') }}" method="POST">
+            <textarea name="content" placeholder="Share your thoughts..." required></textarea>
+            <input type="url" name="image_url" placeholder="Image URL (optional)">
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+    </div>
+
+    <div class="posts-container">
+        {% for post in posts %}
+        <div class="post">
+            <div class="post-header">
+                <img src="{{ post.user.profile_image or url_for('static', filename='images/default-profile.png') }}" 
+                     alt="Profile" class="post-profile-pic">
+                <div class="post-meta">
+                    <span class="post-author">{{ post.user.username }}</span>
+                    <span class="post-date">{{ post.created_at.strftime('%B %d, %Y') }}</span>
+                </div>
+            </div>
+            {% if post.image_url %}
+            <div class="post-image">
+                <img src="{{ post.image_url }}" alt="Post image">
+            </div>
+            {% endif %}
+            <div class="post-content">
+                {{ post.content }}
+            </div>
+            <div class="post-actions">
+                <button class="like-button" data-post-id="{{ post.id }}">
+                    ❤️ {{ post.likes }}
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
